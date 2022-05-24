@@ -1,31 +1,46 @@
 package com.example.myapplication;
 
 public class fetchuserdata {
-    String name;
+    String userid;
+    String fname ;
+    String lname;
     String email;
-    String address;
     String mobileno;
+    String address;
+    String forpost;
     String doj;
-    String post;
 
-    public fetchuserdata(String name, String email, String address, String mobileno, String doj, String post) {
-        this.name = name;
+    public fetchuserdata(String userid ,String fname, String lname, String email, String mobileno, String address, String forpost, String doj) {
+        this.userid=userid;
+        this.fname = fname;
+        this.lname = lname;
         this.email = email;
-        this.address = address;
         this.mobileno = mobileno;
+        this.address = address;
+        this.forpost = forpost;
         this.doj = doj;
-        this.post = post;
     }
 
-    public String getName() {
-        return name;
+    public String getUserid() {return userid; }
+
+    public void setUserid(String userid) {this.userid = userid;}
+
+    public String getFname() {
+
+        return fname ;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
+    public String getLname() {
+        return lname;
+    }
 
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
 
     public String getEmail() {
         return email;
@@ -33,14 +48,6 @@ public class fetchuserdata {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getMobileno() {
@@ -51,19 +58,27 @@ public class fetchuserdata {
         this.mobileno = mobileno;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getForpost() {
+        return forpost;
+    }
+
+    public void setForpost(String forpost) {
+        this.forpost = forpost;
+    }
+
     public String getDoj() {
         return doj;
     }
 
     public void setDoj(String doj) {
         this.doj = doj;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
     }
 }

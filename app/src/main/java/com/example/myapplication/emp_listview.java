@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class emp_listview extends AppCompatActivity {
         rrecview = findViewById(R.id.recview);
         rrecview.setLayoutManager(new LinearLayoutManager(this));
         loaddata();
+       loadrec();
 
     }
     public void loaddata(){
@@ -44,4 +46,12 @@ public class emp_listview extends AppCompatActivity {
         });
 
     }
+
+    private  void loadrec(){
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait Fetching user Data......  ");
+        progressDialog.show();
+    }
+
+
 }

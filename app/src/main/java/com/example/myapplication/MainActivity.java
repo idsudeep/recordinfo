@@ -70,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 Pattern pattern = Pattern.compile(email_format);
                 Matcher matcher = pattern.matcher(getemail);
                 if(getemail.equals("admin") && getpass.equals("admin")){
-                    Intent logi = new Intent(MainActivity.this,emp_listview.class);
-                    startActivity(logi);
+
+                    Intent i = new Intent(MainActivity.this,gateway.class);
+                    startActivity(i);
                     finish();}
                 if(matcher.matches()){ loginStart();}else{loginEmail.setText("");}
 
@@ -97,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 String str = somedata.getMessage();
                 Log.d(str, "onResponse: ");
                 if(str.equals("True")){
-                    Intent i = new Intent(MainActivity.this,emp_listview.class);
-                    startActivity(i);
+                    Intent logi = new Intent(MainActivity.this,emp_listview.class);
+                    startActivity(logi);
                     finish();
                 }
                 if(str.equals("false")){
