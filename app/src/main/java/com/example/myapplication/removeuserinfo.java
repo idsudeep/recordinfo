@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class removeuserinfo extends AppCompatActivity {
-    private static final String rurl ="https://damp-depths-46466.herokuapp.com/school/remove_school_user.php";
+    private static final String rurl ="https://damp-depths-46466.herokuapp.com/school/removeUser.php";
     Button rbtn;
     EditText rnumber;
     @Override
@@ -38,7 +38,7 @@ public class removeuserinfo extends AppCompatActivity {
             String getnumber = rnumber.getText().toString();
 
             removeuser(getnumber);
-            Toast.makeText(removeuserinfo.this,getnumber, Toast.LENGTH_SHORT).show();
+
 
         }
     });
@@ -49,12 +49,12 @@ public class removeuserinfo extends AppCompatActivity {
           StringRequest request = new StringRequest(Request.Method.POST, rurl, new Response.Listener<String>() {
               @Override
               public void onResponse(String response) {
-
+                  Toast.makeText(getApplicationContext(),response, Toast.LENGTH_LONG).show();
               }
           }, new Response.ErrorListener() {
               @Override
               public void onErrorResponse(VolleyError error) {
-
+                  Toast.makeText(getApplicationContext(),error.toString(), Toast.LENGTH_LONG).show();
               }
           }){
               @Nullable
@@ -62,7 +62,7 @@ public class removeuserinfo extends AppCompatActivity {
               protected  Map<String,String>getParams() throws AuthFailureError{
 
                   Map<String,String> map = new HashMap<>();
-                  map.put("rnumber",rnumber);
+                  map.put("mobileno",rnumber);
                   return map;
               }
           };

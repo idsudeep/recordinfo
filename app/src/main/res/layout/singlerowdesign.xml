@@ -123,8 +123,10 @@
                     android:id="@+id/editbtn"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="serif-monospace"
                     android:text="Edit"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textColor="#9A7070" />
 
                 <View
                     android:id="@+id/divider"
