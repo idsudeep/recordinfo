@@ -29,7 +29,7 @@ public class regsiter_form extends AppCompatActivity {
    EditText rfname,rlname,rmname,remail,rpwd,raddress,rphone,rforpost,rdob,rdoj;
    Spinner rgender;
    Button rsignup;
-    private  static final String url = "https://damp-depths-46466.herokuapp.com/school/forgetpas.php";
+    private  static final String url = "https://damp-depths-46466.herokuapp.com/school/register_school_user.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
