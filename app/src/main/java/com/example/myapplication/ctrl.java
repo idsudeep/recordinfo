@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ctrl {
-    private static final String url = "https://damp-depths-46466.herokuapp.com/school/";
+    private static final String url = "https://osseous-assembly.000webhostapp.com/school/";
     private  static  ctrl clientobj;
     private  static Retrofit retrofit;
     ctrl(){

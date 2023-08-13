@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class edituser extends AppCompatActivity {
-    private  static final String updateurl = "https://damp-depths-46466.herokuapp.com/school/update_school_user.php";
+    private  static final String updateurl = "https://osseous-assembly.000webhostapp.com/school/updateUser.php";
    EditText en,em,ep,ea,epos,ej,eln;
    Button btnupdate;
     @Override
