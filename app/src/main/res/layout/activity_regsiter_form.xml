@@ -187,14 +187,14 @@
         android:id="@+id/register_form_btn"
         android:layout_width="152dp"
         android:layout_height="37dp"
-        android:text="signup"
         android:backgroundTint="@color/purple_200"
+        android:text="signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
+        app:layout_constraintVertical_bias="0.939" />
 
     <Spinner
         android:id="@+id/gender"

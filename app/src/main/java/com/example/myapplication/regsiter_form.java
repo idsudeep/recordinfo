@@ -3,12 +3,14 @@ package com.example.myapplication;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,7 +31,9 @@ public class regsiter_form extends AppCompatActivity {
    EditText rfname,rlname,rmname,remail,rpwd,raddress,rphone,rforpost,rdob,rdoj;
    Spinner rgender;
    Button rsignup;
-    private  static final String url = "https://damp-depths-46466.herokuapp.com/school/register_school_user.php";
+
+    private  static final String url = "https://osseous-assembly.000webhostapp.com/school/register_school_user.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +96,7 @@ StringRequest request = new StringRequest(Request.Method.POST, url, new Response
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getApplicationContext(),error.toString(), Toast.LENGTH_LONG).show();
+
     }
 }){
     @Nullable
