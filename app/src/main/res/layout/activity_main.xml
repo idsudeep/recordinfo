@@ -16,15 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.072"
-        app:srcCompat="@drawable/sclogo" />
+        app:srcCompat="?attr/actionModePasteDrawable" />
 
     <TextView
         android:id="@+id/vtitle"
         android:layout_width="254dp"
         android:layout_height="55dp"
-        android:text="Log In Detail"
+        android:text="login"
         android:textAlignment="center"
-        android:textColor="@color/Red"
+        android:textColor="@color/purple_200"
+        android:textColorLink="#03A9F4"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,8 +83,9 @@
         android:id="@+id/createAccV"
         android:layout_width="278dp"
         android:layout_height="32dp"
-        android:text="Create account"
+        android:text="Create a Account"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

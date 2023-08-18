@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class removeuserinfo extends AppCompatActivity {
-    private static final String rurl ="https://damp-depths-46466.herokuapp.com/school/removeUser.php";
+    private static final String rurl ="https://osseous-assembly.000webhostapp.com/school/removeUser.php";
     Button rbtn;
     EditText rnumber;
     @Override

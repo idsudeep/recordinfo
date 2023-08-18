@@ -11,7 +11,7 @@
         android:layout_width="278dp"
         android:layout_height="28dp"
         android:fontFamily="monospace"
-        android:text="Welcome To Portal"
+        android:text="Welcome to Gateway"
         android:textAlignment="center"
         android:textColor="#33A1CD"
 
@@ -44,10 +44,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="74dp"
                 android:layout_marginLeft="8dp"
-                android:backgroundTint="#2A00A3D4"
+                android:backgroundTint="#2A2BB6DF"
                 android:fontFamily="monospace"
                 android:text="view UserInfo"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:iconTint="#711313"
+                app:rippleColor="#A85F5F" />
 
             <Button
                 android:id="@+id/btn_del_user_info"
@@ -57,7 +59,8 @@
                 android:backgroundTint="#31F44336"
                 android:fontFamily="monospace"
                 android:text="remove UserData"
-                android:textColor="@color/yello" />
+                android:textColor="@color/yello"
+                app:iconTint="#2196F3" />
         </LinearLayout>
     </LinearLayout>
 

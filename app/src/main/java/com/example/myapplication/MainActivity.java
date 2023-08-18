@@ -14,13 +14,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -65,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 String getemail = loginEmail.getText().toString();
                 String getpass = loginPass.getText().toString();
 
-               // String reg = "[A-Za-z+_.]+@(.+pub)$";
+                // String reg = "[A-Za-z+_.]+@(.+pub)$";
                 String email_format = "[A-Za-z+_.]+@(.+)$";
                 Pattern pattern = Pattern.compile(email_format);
                 Matcher matcher = pattern.matcher(getemail);
@@ -74,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent i = new Intent(MainActivity.this,gateway.class);
                     startActivity(i);
                     finish();}
-                if(matcher.matches()){ loginStart();}else{loginEmail.setText("");}
+                if(matcher.matches()){ loginStart( getemail.toString(),getpass.toString());}else{loginEmail.setText("");}
 
 
 
@@ -82,39 +92,63 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
-    void loginStart(){
-        String em = loginEmail.getText().toString();
-        String pwd = loginPass.getText().toString();
-        Call<responsedata>call = ctrl
-                                 .getInstance()
-                                 .getapi()
-                                 .verify_user(em,pwd);
+    private void loginStart(String email, String password) {
+        String apiURL = "https://osseous-assembly.000webhostapp.com/school/login.php";
 
-        call.enqueue(new Callback<responsedata>() {
-            @Override
-            public void onResponse(Call<responsedata> call, Response<responsedata> response) {
-                responsedata somedata = response.body();
-                String str = somedata.getMessage();
-                Log.d(str, "onResponse: ");
-                if(str.equals("True")){
-                    Intent logi = new Intent(MainActivity.this,emp_listview.class);
-                    startActivity(logi);
-                    finish();
+        // Create a StringRequest using Volley
+        StringRequest request = new StringRequest(Request.Method.POST, apiURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONObject jsonResult = new JSONObject(response);
+                            boolean success = jsonResult.getBoolean("success");
+                            String message = jsonResult.getString("message");
+
+                            if (success) {
+                                // Login successful, navigate to the main activity
+
+                                Intent i = new Intent(MainActivity.this,gateway.class);
+                                startActivity(i);
+                                finish();
+                                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                                // Add your navigation logic here
+                            } else {
+                                // Login failed, show an error message
+                                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Handle network or API error
+                        Toast.makeText(MainActivity.this, "Error connecting to server", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                if(str.equals("false")){
-                    vtitle.setText("Invalid input please check password or email");
-
-                }
-
-            }
-
+        ) {
             @Override
-            public void onFailure(Call<responsedata> call, Throwable t) {
-            vtitle.setText("login issue");
+            protected Map<String, String> getParams() {
+                // Add parameters to the POST request
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("password", password);
+                return params;
             }
-        });
+        };
+
+        // Add the request to the Volley request queue
+        Volley.newRequestQueue(this).add(request);
     }
-
 
 }
+
+
+
+

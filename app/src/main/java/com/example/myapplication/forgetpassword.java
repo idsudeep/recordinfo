@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -33,7 +34,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class forgetpassword extends AppCompatActivity {
-    private  static final String furl = "https://damp-depths-46466.herokuapp.com/school/forgetpass.php";
+    private  static final String furl = "https://osseous-assembly.000webhostapp.com/school/changePassword.php";
 CheckBox checkbtn;
 EditText fem,fpas,fnewpas ,fd;
 Button btnf;
@@ -111,7 +112,29 @@ TextView fv ,glog;
         StringRequest request = new StringRequest(Request.Method.POST, furl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+
+                try {
+
+                    JSONObject jsonResult = new JSONObject(response);
+                    boolean success = jsonResult.getBoolean("success");
+                    String message = jsonResult.getString("message");
+
+                    if (success) {
+                        // Login successful, navigate to the main activity
+
+                        Intent i = new Intent(forgetpassword.this,MainActivity.class);
+                        startActivity(i);
+                        finish();
+                        Toast.makeText(forgetpassword.this, message, Toast.LENGTH_SHORT).show();
+                        // Add your navigation logic here
+                    } else {
+                        // Login failed, show an error message
+                        Toast.makeText(forgetpassword.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
             }
         }, new Response.ErrorListener() {
